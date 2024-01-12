@@ -23,15 +23,15 @@ export const Newsletter = ({ onValidated, subscribe, status, message}) => {
     return (
         <Col lg={12}>
             <div className="newsletter-bx">
-                <Row>
-                    <Col lg={12} md={6} xl={5}>
+                <Row className="newsletter-mobile">
+                    <Col lg={12} md={12} xl={5}>
                         <h3>Subscribe to our Newsletter</h3>
                         {status === 'sending' && <Alert>Sending...</Alert>}
                         {status === 'error' && <Alert variant="danger">{message.toString()}</Alert>}
                         {status === 'success' && <Alert variant="success">{message.toString()}</Alert>}
                     </Col>
-                    <Col md={6} xl={7}>
-                        <form onSubmit={handleSubmit}>
+                    <Col md={12} xl={7} >
+                        <form onSubmit={handleSubmit} className="ppp">
                             <div className="new-email-bx" >
                                 <input value={email} type="email" onChange={(e) => setEmail(e.target.value)} placeholder="example@mail.com" />
                                 <button type="submit">Submit</button>

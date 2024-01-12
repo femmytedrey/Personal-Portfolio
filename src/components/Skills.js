@@ -36,23 +36,29 @@ export const Skills = () => {
                         <h2>
                             Skills
                         </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br></br>sed aliqua. consectetur adipiscing elit, sed aliqua.</p>
+                        <p>In the realm of web development, I bring a versatile set of skills and expertise.<br></br> 
+                            My proficiency includes:
+                        </p>
                         <Carousel responsive={responsive} infinite = {true}  className="skill-slider">
                             <div className="item">
                                 <img src={meter1} alt = "Image" />
-                                <h5>FrontEnd Development</h5>
+                                <h5>HTML/CSS</h5>
                             </div>
                             <div className="item">
                                 <img src={meter2} alt = "Image" />
-                                <h5>Graphics Designer</h5>
+                                <h5>BOOTSTRAP</h5>
                             </div>
                             <div className="item">
                                 <img src={meter3} alt = "Image" />
-                                <h5>Logo Designer</h5>
+                                <h5>JAVASCRIPT / REACT JS</h5>
                             </div>
                             <div className="item">
                                 <img src={meter1} alt = "Image" />
-                                <h5>UI/UX Designer</h5>
+                                <h5>UIUX & GRAPHICS DESIGN</h5>
+                            </div>
+                            <div className="item">
+                                <img src={meter1} alt = "Image" />
+                                <h5>LOGO DESIGNER</h5>
                             </div>
                         </Carousel>
                     </div>

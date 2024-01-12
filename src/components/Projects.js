@@ -13,31 +13,43 @@ export const Projects = () => {
             title: "Business Startup",
             description: "Design & Development",
             imgUrl: projImg1,
+            url: 'https://www.facebook.com'
           },
           {
             title: "Business Startup",
             description: "Design & Development",
             imgUrl: projImg2,
+            url: 'https://www.google.com'
           },
           {
             title: "Business Startup",
             description: "Design & Development",
             imgUrl: projImg3,
+            url: 'https://www.google.com'
           },
           {
             title: "Business Startup",
             description: "Design & Development",
             imgUrl: projImg1,
+            url: 'https://www.netlify.com'
           },
           {
             title: "Business Startup",
             description: "Design & Development",
             imgUrl: projImg2,
+            url: 'https://www.google.com'
           },
           {
             title: "Business Startup",
             description: "Design & Development",
             imgUrl: projImg3,
+            url: 'https://www.twitter.com'
+          },
+          {
+            title: "Business Startup",
+            description: "Design & Development",
+            imgUrl: projImg2,
+            url: 'https://www.google.com'
           },
     ];
   return (
@@ -67,7 +79,7 @@ export const Projects = () => {
                         </Nav>
                         <Tab.Content id='slideInUp'>
                             <Tab.Pane eventKey='first'>
-                                <Row>
+                                <Row className='proj-container'>
                                     {
                                         projects.map((project, index) => {
                                             return(

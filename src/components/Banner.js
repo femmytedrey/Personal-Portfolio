@@ -5,11 +5,12 @@ import { ArrowRightCircle } from 'react-bootstrap-icons';
 import headerImg from '../assets/img/header-img.svg';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import { Contact } from './Contact';
 
 export const Banner = () => {
     const [ loopNum, setLoopNum ] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
-    const toRotate = [ 'Front-end Developement', 'Graphics Designer', 'Logo Designer', 'UI/UX Designer' ];
+    const toRotate = [ 'Front-end Developer', 'Graphics Designer', 'Logo Designer', 'UI/UX Designer' ];
     const [ text, setText ] = useState('');
     const [ delta, setDelta ] = useState(300 - Math.random() * 100);
     const period = 2000;
@@ -52,9 +53,9 @@ export const Banner = () => {
                     {({isVisible}) => 
                         <div className={isVisible ? "animate__animated animate__fadeIn" : '' }>
                             <span className='tagline'>Welcome to my Portfolio</span>
-                            <h1>{`Hi I'm FemiDev `}<span className='wrap'>{text}</span></h1>
-                            <p>Aspiring developer on a journey to learn and grow in the world of coding. Excited about building software and exploring new technologies.</p>
-                            <button onClick={() => console.log('connect')}>Let's connect <ArrowRightCircle size={25}/></button>
+                            <h1>{`Hi I'm FemiDev! `}<span className='wrap'>{text}</span></h1>
+                            <p>I'm a frontend developer with a passion for crafting seamless and engaging digital experiences. From intuitive user interfaces to responsive designs, I bring ideas to life. Let's collaborate to enhance your online presence!</p>
+                            <a href='#connect' className='letsconnect'><button onClick={() => console.log('connect')}>Let's connect <ArrowRightCircle size={25}/></button></a>
                         </div>
                     }
                     </TrackVisibility>
