@@ -7,7 +7,7 @@ export const Newsletter = ({ onValidated, subscribe, status, message}) => {
 
     useEffect(() => {
         if(status === 'success') clearFields()
-    }, status)
+    }, [status])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -27,8 +27,8 @@ export const Newsletter = ({ onValidated, subscribe, status, message}) => {
                     <Col lg={12} md={6} xl={5}>
                         <h3>Subscribe to our Newsletter</h3>
                         {status === 'sending' && <Alert>Sending...</Alert>}
-                        {status === 'error' && <Alert variant="danger">{message}</Alert>}
-                        {status === 'success' && <Alert variant="success">{message}</Alert>}
+                        {status === 'error' && <Alert variant="danger">{message.toString()}</Alert>}
+                        {status === 'success' && <Alert variant="success">{message.toString()}</Alert>}
                     </Col>
                     <Col md={6} xl={7}>
                         <form onSubmit={handleSubmit}>

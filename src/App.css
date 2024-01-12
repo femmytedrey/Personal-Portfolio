@@ -16,31 +16,72 @@
 }
 
 /* Default CSS */
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html{
+html {
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
 }
 
-body{
+body {
   font-weight: 400;
   overflow-x: hidden;
   position: relative;
-  background: #121212 !important;
+  background-color: #121212 !important;
   color: #fff !important;
-  font-family: 'Centra', san-serif !important;
+  font-family: 'Centra', sans-serif !important;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
   line-height: normal;
 }
+
+p, a, li, button, ul {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  border: 0;
+  background-color: transparent;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+@media (min-width:1700px) {
+	main .container {
+		max-width: 100%;
+		padding: 0 150px;
+	}
+}
+
+p.success {
+	color: green;
+}
+
+p.danger {
+	color: red;
+}
+
 
 nav.navbar {
   padding: 18px 0;
@@ -66,10 +107,6 @@ nav.navbar a.navbar-brand {
   transition: 0.3s ease-in-out;
 }
 
-.img-logo:hover{
-  width: 100%;
-  transition: 0.3s ease-in-out;
-}
 
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
@@ -225,6 +262,65 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
 
+@media screen and (max-width: 991px) {
+  /* Adjust styles for mobile view here */
+  /* Add any other mobile-specific styles here */
+  
+  /* For example, you can override or modify styles for the collapsed navbar */
+  .container{
+    padding: 10px 0px;
+  }
+  .navbarOnMobile{
+    background: black;
+  }
+  .mobile-nav{
+    /* background: blue; */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 15px;
+  }
+
+  .mobile-nav .mobile-nav-menu{
+    padding-bottom: 12px;
+    /* background: green; */
+    height: 45px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+  }
+
+  .mobile-nav .mobile-nav-menu:hover{
+    background: rgb(33, 33, 33);
+  }
+
+  .img-logo{
+    width: 200px;
+    transition: 0.3s ease-in-out;
+  }
+
+  .navbar-text{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .social-icon{
+    display: none;
+  }
+
+  .vvo{
+    width: 100%;
+  }
+
+  
+  
+}
+
 /* Banner style */
 .banner {
   margin-top: 0;
@@ -271,8 +367,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   letter-spacing: 0.8px;
   display: flex;
   align-items: center;
-  background: transparent;
-  border: none;
+  /* background: transparent;
+  border: none; */
 }
 
 .banner button svg {
@@ -639,8 +735,8 @@ border-right: 0.08em solid #666;
   border: 0;
   padding: 0 15px;
   border: none;
-  background-color: blue;
-  height:;
+  /* background-color: blue; */
+  /* height:40px; */
 }
 
 .new-email-bx input:focus{

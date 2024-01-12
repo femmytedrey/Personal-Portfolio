@@ -5,6 +5,7 @@ import projImg3 from '../assets/img/project-img2.png'
 import { Container, Row, Col, Nav, Tab } from 'react-bootstrap'
 import { ProjectCard } from './ProjectCard'
 import colorSharp2 from '../assets/img/color-sharp2.png'
+import TrackVisibility from 'react-on-screen'
 
 export const Projects = () => {
     const projects = [
@@ -44,8 +45,14 @@ export const Projects = () => {
         <Container>
             <Row>
                 <Col size={12}>
-                    <h2>Projects</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, elit, sed aliqua.</p>
+                <TrackVisibility>
+                    {({isVisible}) => 
+                        <div className={isVisible ? "animate__animated animate__bounceIn" : '' }>
+                            <h2>Projects</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, elit, sed aliqua.</p>
+                        </div>
+                    }
+                </TrackVisibility>
                     <Tab.Container id='projects-tab' defaultActiveKey='first'>
                         <Nav variant="pills" className='nav-pills mb-5 justify-content-center align-items-center' id='pills-tab'>
                             <Nav.Item>
