@@ -262,6 +262,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
 
+.mobile-nav{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
 @media screen and (max-width: 991px) {
   /* Adjust styles for mobile view here */
   /* Add any other mobile-specific styles here */
@@ -413,6 +419,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .txt-rotate > .wrap {
 border-right: 0.08em solid #666;
+}
+
+.letsconnect{
+  text-decoration: none;
 }
 
 /* skiils */
@@ -605,7 +615,14 @@ border-right: 0.08em solid #666;
 }
 
 .proj-container{
-  
+  display: flex;
+  justify-content: center;
+}
+
+.proj-txtx a{
+  color: white;
+  /* text-decoration: none; */
+  font-size: 16px;
 }
 
 /*contact */

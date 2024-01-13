@@ -10,12 +10,18 @@ export const Newsletter = ({ onValidated, subscribe, status, message}) => {
     }, [status])
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        email.indexOf('@') > -1 &&
-        onValidated({
-            EMAIL: email
-        })
-    }
+        e.preventDefault();
+      
+        if (email.indexOf('@') > -1 && email.length > 0) {
+        //   onValidated({
+        //     EMAIL: email,
+        //   });
+          alert('Subscribed');
+        } else {
+          alert('Please enter a valid email address');
+        }
+      };
+      
 
     const clearFields = () => {
         setEmail('')
@@ -31,7 +37,7 @@ export const Newsletter = ({ onValidated, subscribe, status, message}) => {
                         {status === 'success' && <Alert variant="success">{message.toString()}</Alert>}
                     </Col>
                     <Col md={12} xl={7} >
-                        <form onSubmit={handleSubmit} className="ppp">
+                        <form onSubmit={handleSubmit} className="ppp" noValidate>
                             <div className="new-email-bx" >
                                 <input value={email} type="email" onChange={(e) => setEmail(e.target.value)} placeholder="example@mail.com" />
                                 <button type="submit">Submit</button>

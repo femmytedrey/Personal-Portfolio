@@ -2,6 +2,9 @@ import React from 'react'
 import projImg1 from '../assets/img/project-img1.png'
 import projImg2 from '../assets/img/project-img2.png'
 import projImg3 from '../assets/img/project-img2.png'
+import cocktail from '../assets/img/Cocktail.jpeg'
+import calculator from '../assets/img/Calculator.jpeg'
+import manage from '../assets/img/Manage.jpeg'
 import { Container, Row, Col, Nav, Tab } from 'react-bootstrap'
 import { ProjectCard } from './ProjectCard'
 import colorSharp2 from '../assets/img/color-sharp2.png'
@@ -10,46 +13,40 @@ import TrackVisibility from 'react-on-screen'
 export const Projects = () => {
     const projects = [
         {
-            title: "Business Startup",
+            title: "TheCocktail",
             description: "Design & Development",
-            imgUrl: projImg1,
-            url: 'https://www.facebook.com'
+            imgUrl: cocktail,
+            url: 'https://cocktail-femidev.netlify.app/'
           },
           {
-            title: "Business Startup",
-            description: "Design & Development",
-            imgUrl: projImg2,
-            url: 'https://www.google.com'
+            title: "Calculator",
+            description: "3 themes Calculator",
+            imgUrl: calculator,
+            url: 'https://modeswitchcalc.netlify.app/'
           },
           {
-            title: "Business Startup",
-            description: "Design & Development",
-            imgUrl: projImg3,
-            url: 'https://www.google.com'
+            title: "Manage",
+            description: "Manage landing page",
+            imgUrl: manage,
+            url: 'https://managelandingpagee.netlify.app/'
           },
           {
-            title: "Business Startup",
+            title: "TheCocktailDB",
             description: "Design & Development",
-            imgUrl: projImg1,
-            url: 'https://www.netlify.com'
+            imgUrl: cocktail,
+            url: 'https://cocktail-femidev.netlify.app/'
           },
           {
-            title: "Business Startup",
-            description: "Design & Development",
-            imgUrl: projImg2,
-            url: 'https://www.google.com'
+            title: "Calculator",
+            description: "3 themes Calculator",
+            imgUrl: calculator,
+            url: 'https://modeswitchcalc.netlify.app/'
           },
           {
-            title: "Business Startup",
-            description: "Design & Development",
-            imgUrl: projImg3,
-            url: 'https://www.twitter.com'
-          },
-          {
-            title: "Business Startup",
-            description: "Design & Development",
-            imgUrl: projImg2,
-            url: 'https://www.google.com'
+            title: "Manage",
+            description: "Manage landing page",
+            imgUrl: manage,
+            url: 'https://managelandingpagee.netlify.app/'
           },
     ];
   return (
