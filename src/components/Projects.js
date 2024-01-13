@@ -5,6 +5,7 @@ import projImg3 from '../assets/img/project-img2.png'
 import cocktail from '../assets/img/Cocktail.jpeg'
 import calculator from '../assets/img/Calculator.jpeg'
 import manage from '../assets/img/Manage.jpeg'
+import loopstudio from '../assets/img/LoopStudio.jpeg'
 import { Container, Row, Col, Nav, Tab } from 'react-bootstrap'
 import { ProjectCard } from './ProjectCard'
 import colorSharp2 from '../assets/img/color-sharp2.png'
@@ -31,10 +32,10 @@ export const Projects = () => {
             url: 'https://managelandingpagee.netlify.app/'
           },
           {
-            title: "TheCocktailDB",
+            title: "Loop Studio",
             description: "Design & Development",
-            imgUrl: cocktail,
-            url: 'https://cocktail-femidev.netlify.app/'
+            imgUrl: loopstudio,
+            url: 'https://looopstudiooo.netlify.app/'
           },
           {
             title: "Calculator",
