@@ -74,7 +74,7 @@ export const Skills = () => {
                                 <h5>LOGO DESIGNER</h5>
                             </div>
                         </Carousel>
-                        <button className="btn col-3 py-3 mt-5 downloadbtn" onClick={handleDownloadCV}>Download CV</button>
+                        <button className="btn col-12 col-sm-12 col-md-6 col-lg-5 py-2 mt-5 downloadbtn" onClick={handleDownloadCV}>Download CV</button>
                     </div>
                     
                 </Col>
