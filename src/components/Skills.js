@@ -27,6 +27,19 @@ export const Skills = () => {
           items: 1
         }
     };
+
+    const handleDownloadCV = () => {
+        // Add logic to initiate the download of the CV file
+        // For example, you can create a link element and trigger a click event
+        const downloadLink = document.createElement('a');
+        downloadLink.href = '/src/assets/img/banner-bg.png'; // Replace with the actual path to your CV file
+        downloadLink.download = 'banner-bg.png'; // Replace with the desired file name
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      };
+
+
   return (
     <section className="skill" id="skills">
         <Container>
@@ -61,8 +74,11 @@ export const Skills = () => {
                                 <h5>LOGO DESIGNER</h5>
                             </div>
                         </Carousel>
+                        <button className="btn col-3 py-3 mt-5 downloadbtn" onClick={handleDownloadCV}>Download CV</button>
                     </div>
+                    
                 </Col>
+                
             </Row>
         </Container>
         <img className="background-image-left" src={colorSharp}  />
