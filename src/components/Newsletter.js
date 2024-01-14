@@ -1,26 +1,52 @@
 import { Alert, Col, Row } from "react-bootstrap"
-import { useState, useEffect } from "react"
-
+import { useState, useEffect, useRef } from "react"
+import emailjs from '@emailjs/browser'
 
 export const Newsletter = ({ onValidated, subscribe, status, message}) => {
-    const [ email, setEmail]  = useState('')
+    const [ email, setEmail]  = useState('');
+    const form = useRef()
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+    
+        if (email.indexOf('@') > -1 && email.length > 0) {
+            emailjs
+              .sendForm("service_mcet92i", "template_2f15kte", form.current, "LdM5Jm1VIvmmPqBjL")
+              .then(
+                (result) => {
+                  console.log(result.text);
+                  alert("Subscribed");
+                  clearFields();
+                },
+                (error) => {
+                  console.log(error.text);
+                }
+              );
+          } else {
+            alert("Please enter a valid email address before sending.");
+        }
+    };
 
     useEffect(() => {
         if(status === 'success') clearFields()
     }, [status])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // useEffect(() => {
+    //     if(status === 'success') clearFields()
+    // }, [status])
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
       
-        if (email.indexOf('@') > -1 && email.length > 0) {
-        //   onValidated({
-        //     EMAIL: email,
-        //   });
-          alert('Subscribed');
-        } else {
-          alert('Please enter a valid email address');
-        }
-      };
+    //     if (email.indexOf('@') > -1 && email.length > 0) {
+    //     //   onValidated({
+    //     //     EMAIL: email,
+    //     //   });
+    //       alert('Subscribed');
+    //     } else {
+    //       alert('Please enter a valid email address');
+    //     }
+    //   };
       
 
     const clearFields = () => {
@@ -37,9 +63,9 @@ export const Newsletter = ({ onValidated, subscribe, status, message}) => {
                         {status === 'success' && <Alert variant="success">{message.toString()}</Alert>}
                     </Col>
                     <Col md={12} xl={7} >
-                        <form onSubmit={handleSubmit} className="ppp" noValidate>
+                        <form ref={form} onSubmit={sendEmail} className="ppp" noValidate>
                             <div className="new-email-bx" >
-                                <input value={email} type="email" onChange={(e) => setEmail(e.target.value)} placeholder="example@mail.com" />
+                                <input value={email} type="email" onChange={(e) => setEmail(e.target.value)} placeholder="example@mail.com" name="user-email" />
                                 <button type="submit">Submit</button>
                             </div>
                         </form>
