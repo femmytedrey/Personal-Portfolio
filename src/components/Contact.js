@@ -20,41 +20,78 @@ export const Contact = () => {
 
     const sendEmail = (e) => {
         e.preventDefault();
-    
-        emailjs.sendForm('service_mcet92i', 'template_xw54fes', form.current, 'YOUR_PUBLIC_KEY')
-          .then((result) => {
-              console.log(result.text);
-          }, (error) => {
-              console.log(error.text);
-          });
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const phoneRegex = /^[0-9]+$/;
+
+        if(formDetails.firstName.trim() === '' || !isNaN(formDetails.firstName.trim())){
+            alert('Please provide a valid first name');
+            setButtonText('Send')
+            return
+        } else if(formDetails.lastName.trim() === '' || !isNaN(formDetails.lastName.trim())){
+            alert('Please provide a valid last name');
+            setButtonText('Send')
+            return
+        } else if (!emailRegex.test(formDetails.email.trim())) {
+            alert('Please provide a valid email address');
+            setButtonText('Send')
+            return;
+        } else if (formDetails.phone.trim() === '' || !phoneRegex.test(formDetails.phone.trim())){
+            alert('Please provide a valid phone number')
+            setButtonText('Send')
+            return;
+        } else if (formDetails.message.trim() === ''){
+            alert('Message field cannot be empty')
+            setButtonText('Send')
+            return;
+        } else{
+            emailjs.sendForm('service_mcet92i', 'template_xw54fes', form.current, 'LdM5Jm1VIvmmPqBjL')
+            .then((result) => {
+                if (result.status === 200){
+                    setButtonText('Sent')
+                }
+                
+                setTimeout(() => {
+                    setButtonText('Send')
+                }, 3000);
+                formDetails.firstName = ''
+                formDetails.lastName = ''
+                formDetails.email = ''
+                formDetails.phone = ''
+                formDetails.message = ''
+
+            }, (error) => {
+                console.log(error.text);
+            });
+        }
+        
       };
 
     const onFormUpdate = (category, value) => {
-        setFormDetails({
-            ...formDetails,
-            [category]: value
-        })
+         setFormDetails({
+             ...formDetails,
+             [category]: value
+         })
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setButtonText('Sending...');
-        let response = await fetch('http://localhost:5000/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'Application/json;charset=utf-8'
-            },
-            body: JSON.stringify(formDetails)
-        });
-        setButtonText('Send');
-        let result = response.json();
-        setFormDetails(formInitialDetails);
-        if(result.code === 200){
-            setStatus({ success: true, message: 'Message sent successfully'})
-        } else {
-            setStatus({ success: false, message: 'Something went wrong, please try again later'})
-        }
-    };
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     setButtonText('Sending...');
+    //     let response = await fetch('http://localhost:5000/contact', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'Application/json;charset=utf-8'
+    //         },
+    //         body: JSON.stringify(formDetails)
+    //     });
+    //     setButtonText('Send');
+    //     let result = response.json();
+    //     setFormDetails(formInitialDetails);
+    //     if(result.code === 200){
+    //         setStatus({ success: true, message: 'Message sent successfully'})
+    //     } else {
+    //         setStatus({ success: false, message: 'Something went wrong, please try again later'})
+    //     }
+    // };
 
   return (
     <section className='contact' id='connect'>
@@ -65,7 +102,7 @@ export const Contact = () => {
                 </Col>
                 <Col md={6}>
                     <h2>Get In Touch</h2>
-                    <form ref={form} onSubmit={handleSubmit}>
+                    <form ref={form} onSubmit={sendEmail} noValidate>
                         <Row>
                             <Col sm={6} className='px-1'>
                                 <input name='fname' id='fname' type='text' value={formDetails.firstName} placeholder='First Name' onChange={(e) => onFormUpdate('firstName', e.target.value)} />

@@ -277,7 +277,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     padding: 10px 0px;
   }
   .navbarOnMobile{
-    background: black;
+    background: #121212;
   }
   .mobile-nav{
     /* background: blue; */
@@ -337,6 +337,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     margin-bottom: 80px;
     margin-top: -122px;
   }
+
+  .new-email-bx button{
+    padding: 20px 45px !important;
+  } 
   
 }
 
@@ -424,6 +428,13 @@ border-right: 0.08em solid #666;
 .letsconnect{
   text-decoration: none;
 }
+
+.eachInp{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 
 /* skiils */
 .skill{
