@@ -1,79 +1,74 @@
-import { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../assets/img/header-img.svg";
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import { ArrowRightCircle } from 'react-bootstrap-icons';
+import headerImg from '../assets/img/header-img.svg';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 
 export const Banner = () => {
-  const [loopNum, setLoopNum] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [text, setText] = useState('');
-  const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const [index, setIndex] = useState(1);
-  const toRotate = [ "Web Developer", "Web Designer", "UI/UX Designer" ];
-  const period = 2000;
+    const [loopNum, setLoopNum] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const toRotate = ['Front-end Developer', 'Graphics Designer', 'Logo Designer', 'UI/UX Designer'];
+    const [text, setText] = useState('');
+    const delta = useRef(300 - Math.random() * 100);
 
-  useEffect(() => {
-    let ticker = setInterval(() => {
-      tick();
-    }, delta);
+    const tick = useCallback(() => {
+        let i = loopNum % toRotate.length;
+        let fulltext = toRotate[i];
+        let updatedText = isDeleting ? fulltext.substring(0, text.length - 1) : fulltext.substring(0, text.length + 1);
 
-    return () => { clearInterval(ticker) };
-  }, [text])
+        setText(updatedText);
 
-  const tick = () => {
-    let i = loopNum % toRotate.length;
-    let fullText = toRotate[i];
-    let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+        if (isDeleting) {
+            delta.current /= 2;
+        }
 
-    setText(updatedText);
+        if (!isDeleting && updatedText === fulltext) {
+            setIsDeleting(true);
+            delta.current = 2000; // Set to your desired period
+        } else if (isDeleting && updatedText === '') {
+            setIsDeleting(false);
+            setLoopNum((prevLoopNum) => prevLoopNum + 1);
+            delta.current = 500;
+        }
+    }, [loopNum, text, isDeleting, toRotate]);
 
-    if (isDeleting) {
-      setDelta(prevDelta => prevDelta / 2);
-    }
+    useEffect(() => {
+        let ticker = setInterval(() => {
+            tick();
+        }, delta.current);
 
-    if (!isDeleting && updatedText === fullText) {
-      setIsDeleting(true);
-      setIndex(prevIndex => prevIndex - 1);
-      setDelta(period);
-    } else if (isDeleting && updatedText === '') {
-      setIsDeleting(false);
-      setLoopNum(loopNum + 1);
-      setIndex(1);
-      setDelta(500);
-    } else {
-      setIndex(prevIndex => prevIndex + 1);
-    }
-  }
+        return () => {
+            clearInterval(ticker);
+        };
+    }, [tick]);
 
-  return (
-    <section className="banner" id="home">
-      <Container>
-        <Row className="aligh-items-center">
-          <Col xs={12} md={6} xl={7}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <span className="tagline">Welcome to my Portfolio</span>
-                <h1>{`Hi! I'm Judy`} <span className="txt-rotate" dataperiod="1000" data-rotate='[ "Web Developer", "Web Designer", "UI/UX Designer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>
-                  I'm a frontend developer with a passion for crafting seamless and engaging digital experiences. From intuitive user interfaces to responsive designs, I bring ideas to life. Let's collaborate to enhance your online presence!
-                  </p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
-              </div>}
-            </TrackVisibility>
-          </Col>
-          <Col xs={12} md={6} xl={5}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img"/>
-                </div>}
-            </TrackVisibility>
-          </Col>
-        </Row>
-      </Container>
-    </section>
-  )
-}
+    return (
+        <section className='banner' id='home'>
+            <Container>
+                <Row className='align-items-center'>
+                    <Col xs={12} md={6} xl={7}>
+                        <TrackVisibility>
+                            {({ isVisible }) => (
+                                <div className={`animate__animated ${isVisible ? 'animate__fadeIn' : ''}`}>
+                                    <span className='tagline'>Welcome to my Portfolio</span>
+                                    <h1>{`Hi I'm FemiDev! `}<span className='wrap'>{text}</span></h1>
+                                    <p>
+                                        I'm a frontend developer with a passion for crafting seamless and engaging digital experiences. From intuitive user interfaces
+                                        to responsive designs, I bring ideas to life. Let's collaborate to enhance your online presence!
+                                    </p>
+                                    <a href='#connect' className='letsconnect'>
+                                        <button onClick={() => console.log('connect')}>Let's connect <ArrowRightCircle size={25} /></button>
+                                    </a>
+                                </div>
+                            )}
+                        </TrackVisibility>
+                    </Col>
+                    <Col xs={12} md={6} xl={5}>
+                        <img src={headerImg} alt='Header' />
+                    </Col>
+                </Row>
+            </Container>
+        </section>
+    );
+};
