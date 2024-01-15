@@ -170,6 +170,15 @@ span.navbar-text {
 	filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
 }
 
+.social-icon .github {
+  fill: #ffffff;
+}
+
+.social-icon:hover .github {
+  fill: #000000;
+  z-index: 1000;
+}
+
 .navbar-text button {
   font-weight: 700;
   color: #fff;
@@ -315,7 +324,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     flex-direction: column;
     padding: 20px;
   }
-  .social-icon{
+  .m-social-icon{
     display: none;
   }
 
@@ -847,6 +856,8 @@ border-right: 0.08em solid #666;
   letter-spacing: 0.5px;
   margin-top: 20px;
 }
+
+
 
 
 
