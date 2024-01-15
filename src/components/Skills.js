@@ -29,14 +29,7 @@ export const Skills = () => {
     };
 
     const handleDownloadCV = () => {
-        // Add logic to initiate the download of the CV file
-        // For example, you can create a link element and trigger a click event
-        const downloadLink = document.createElement('a');
-        downloadLink.href = '/src/assets/img/FemiDev-CV.pdf'; // Replace with the actual path to your CV file
-        downloadLink.download = 'FemiDev-CV.pdf'; // Replace with the desired file name
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
+        window.open('https://drive.google.com/file/d/1-GFLbmGV0A6WjwhoXJpTL-IhdMKN9cU2/view?usp=drivesdk', '_blank');
       };
 
 
