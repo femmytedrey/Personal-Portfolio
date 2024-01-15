@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from '../assets/img/logo.png';
 import navIcon1 from '../assets/img/nav-icon1.svg'
 import navIcon2 from '../assets/img/nav-icon2.svg'

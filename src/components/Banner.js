@@ -5,7 +5,6 @@ import { ArrowRightCircle } from 'react-bootstrap-icons';
 import headerImg from '../assets/img/header-img.svg';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import { Contact } from './Contact';
 
 export const Banner = () => {
     const [ loopNum, setLoopNum ] = useState(0);
@@ -51,7 +50,7 @@ export const Banner = () => {
                 <Col xs={12} md={6} xl={7}>
                     <TrackVisibility>
                     {({isVisible}) => 
-                        <div className={isVisible ? "animate__animated animate__fadeIn" : '' }>
+                        <div className={`animate__animated ${isVisible ? 'animate__fadeIn' : ''}`}>
                             <span className='tagline'>Welcome to my Portfolio</span>
                             <h1>{`Hi I'm FemiDev! `}<span className='wrap'>{text}</span></h1>
                             <p>I'm a frontend developer with a passion for crafting seamless and engaging digital experiences. From intuitive user interfaces to responsive designs, I bring ideas to life. Let's collaborate to enhance your online presence!</p>
@@ -61,7 +60,7 @@ export const Banner = () => {
                     </TrackVisibility>
                 </Col>
                 <Col xs={12} md={6} xl={5}>
-                    <img src={headerImg} alt='Header Img' />
+                    <img src={headerImg} alt='Header' />
                 </Col>
             </Row>
         </Container>

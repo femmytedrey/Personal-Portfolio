@@ -1,7 +1,4 @@
 import React from 'react'
-import projImg1 from '../assets/img/project-img1.png'
-import projImg2 from '../assets/img/project-img2.png'
-import projImg3 from '../assets/img/project-img2.png'
 import cocktail from '../assets/img/Cocktail.jpeg'
 import calculator from '../assets/img/Calculator.jpeg'
 import manage from '../assets/img/Manage.jpeg'
@@ -94,7 +91,7 @@ export const Projects = () => {
                 </Col>
             </Row>
         </Container>
-        <img className='background-image-right' src={ colorSharp2 } />
+        <img className='background-image-right' src={ colorSharp2 } alt='colorSharp2'/>
     </section>
   )
 }

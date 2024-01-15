@@ -47,6 +47,7 @@ export const Contact = () => {
             emailjs.sendForm('service_mcet92i', 'template_xw54fes', form.current, 'LdM5Jm1VIvmmPqBjL')
             .then((result) => {
                 if (result.status === 200){
+                    setStatus({ success: true, message: 'Email sent successfully' })
                     setButtonText('Sent')
                 }
                 
@@ -118,14 +119,15 @@ export const Contact = () => {
                             </Col>
                             <Col>
                                 <textarea name='message' rows='6' value={formDetails.message} placeholder='Message' onChange={(e) => onFormUpdate('message', e.target.value)} />
+                                {
+                                    status.message &&
+                                    <Row>
+                                        <p className={status.success === false ? 'danger' : 'success'}>{status.message}</p>
+                                    </Row>
+                                }
                                 <button type='submit'><span>{buttonText}</span></button>
                             </Col>
-                            {
-                                status.message &&
-                                <Col>
-                                    <p className={status.success === false ? 'danger' : 'success'}>{status.message}</p>
-                                </Col>
-                            }
+                            
                         </Row>
                     </form>
                 </Col>

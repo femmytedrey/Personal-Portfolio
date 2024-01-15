@@ -54,23 +54,23 @@ export const Skills = () => {
                         </p>
                         <Carousel responsive={responsive} infinite = {true}  className="skill-slider">
                             <div className="item">
-                                <img src={meter1} alt = "Image" />
+                                <img src={meter1} alt = "meter1" />
                                 <h5>HTML/CSS</h5>
                             </div>
                             <div className="item">
-                                <img src={meter2} alt = "Image" />
+                                <img src={meter2} alt = "meter2" />
                                 <h5>BOOTSTRAP</h5>
                             </div>
                             <div className="item">
-                                <img src={meter3} alt = "Image" />
+                                <img src={meter3} alt = "meter3" />
                                 <h5>JAVASCRIPT / REACT JS</h5>
                             </div>
                             <div className="item">
-                                <img src={meter1} alt = "Image" />
+                                <img src={meter1} alt = "meter4" />
                                 <h5>UIUX & GRAPHICS DESIGN</h5>
                             </div>
                             <div className="item">
-                                <img src={meter1} alt = "Image" />
+                                <img src={meter1} alt = "meter1" />
                                 <h5>LOGO DESIGNER</h5>
                             </div>
                         </Carousel>
@@ -81,7 +81,7 @@ export const Skills = () => {
                 
             </Row>
         </Container>
-        <img className="background-image-left" src={colorSharp}  />
+        <img className="background-image-left" src={colorSharp} alt="colorsharp" />
         </section>
   )
 }
