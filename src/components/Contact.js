@@ -104,7 +104,7 @@ export const Contact = () => {
                 <Col md={6}>
                     <h2>Get In Touch</h2>
                     <form ref={form} onSubmit={sendEmail} noValidate>
-                        <Row>
+                        <Row className='px-3'>
                             <Col sm={6} className='px-1'>
                                 <input name='fname' id='fname' type='text' value={formDetails.firstName} placeholder='First Name' onChange={(e) => onFormUpdate('firstName', e.target.value)} />
                             </Col>
