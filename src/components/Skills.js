@@ -32,8 +32,8 @@ export const Skills = () => {
         // Add logic to initiate the download of the CV file
         // For example, you can create a link element and trigger a click event
         const downloadLink = document.createElement('a');
-        downloadLink.href = '/src/assets/img/banner-bg.png'; // Replace with the actual path to your CV file
-        downloadLink.download = 'banner-bg.png'; // Replace with the desired file name
+        downloadLink.href = '/src/assets/img/FemiDev-CV.pdf'; // Replace with the actual path to your CV file
+        downloadLink.download = 'FemiDev-CV.pdf'; // Replace with the desired file name
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
