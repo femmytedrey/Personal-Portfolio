@@ -589,16 +589,16 @@ border-right: 0.08em solid #666;
 }
 
 .project .nav.nav-pills .nav-link.active {
-  border: 1px solid rgba(255, 255, 255, 1);
+  /* border: 1px solid rgba(255, 255, 255, 1); */
 }
 
 .nav-link#projects-tabs-tab-first {
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* border: 1px solid rgba(255, 255, 255, 0.5); */
   border-radius: 55px 0px 0px 55px;
 }
 
 .nav-link#projects-tabs-tab-second {
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  /* border-top: 1px solid rgba(255, 255, 255, 0.5); */
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
