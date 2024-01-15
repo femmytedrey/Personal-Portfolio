@@ -54,14 +54,14 @@ export const Projects = () => {
                 <Col size={12}>
                 <TrackVisibility>
                     {({isVisible}) => 
-                        <div className={isVisible ? "animate__animated animate__bounceIn" : '' }>
+                        <div className={` mobile-padding p-0 ${isVisible ? "animate__animated animate__bounceIn" : ''}` }>
                             <h2>Projects</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, elit, sed aliqua.</p>
                         </div>
                     }
                 </TrackVisibility>
                     <Tab.Container id='projects-tab' defaultActiveKey='first'>
-                        <Nav variant="pills" className='nav-pills mb-5 justify-content-center align-items-center' id='pills-tab'>
+                        <Nav variant="pills" className='tab-padding nav-pills mb-5 justify-content-center align-items-center' id='pills-tab'>
                             <Nav.Item>
                                 <Nav.Link eventKey="first">Tab 1</Nav.Link>
                             </Nav.Item>

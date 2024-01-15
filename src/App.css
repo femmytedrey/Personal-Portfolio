@@ -340,7 +340,35 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
   .new-email-bx button{
     padding: 20px 45px !important;
-  } 
+  }
+
+  .mobile-padding{
+    padding: 0px !important;
+    margin: 0px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobile-padding p{
+    margin: 3% 10% !important;
+    width: 90% !important;
+  }
+
+  .tab-padding{
+    margin: 3% 5% !important;
+    width: 90% !important;
+  }
+
+  .skill{
+    padding: 0,0,20px,0 !important;
+  }
+  
+  .skill-bx{
+    padding: 50px 18px !important;
+  }
+  
   
 }
 
