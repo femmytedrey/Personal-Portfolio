@@ -1,20 +1,33 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import contactImg from '../assets/img/contact-img.svg'
 import { Container, Row, Col } from 'react-bootstrap'
+import emailjs from '@emailjs/browser'
 
 export const Contact = () => {
     const formInitialDetails = {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        message: '',
+         firstName: '',
+         lastName: '',
+         email: '',
+         phone: '',
+         message: '',
     }
 
     const [ formDetails, setFormDetails ] = useState(formInitialDetails);
     const [ buttonText, setButtonText ] = useState('send');
     const [ status, setStatus ] = useState({});
+    const form = useRef();
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_mcet92i', 'template_xw54fes', form.current, 'YOUR_PUBLIC_KEY')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+      };
 
     const onFormUpdate = (category, value) => {
         setFormDetails({
@@ -52,22 +65,22 @@ export const Contact = () => {
                 </Col>
                 <Col md={6}>
                     <h2>Get In Touch</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form ref={form} onSubmit={handleSubmit}>
                         <Row>
                             <Col sm={6} className='px-1'>
-                                <input id='fname' type='text' value={formDetails.firstName} placeholder='First Name' onChange={(e) => onFormUpdate('firstName', e.target.value)} />
+                                <input name='fname' id='fname' type='text' value={formDetails.firstName} placeholder='First Name' onChange={(e) => onFormUpdate('firstName', e.target.value)} />
                             </Col>
                             <Col sm={6} className='px-1'>
-                                <input id='lname' type='text' value={formDetails.lastName} placeholder='Last Name' onChange={(e) => onFormUpdate('lastName', e.target.value)} />
+                                <input name='lname' id='lname' type='text' value={formDetails.lastName} placeholder='Last Name' onChange={(e) => onFormUpdate('lastName', e.target.value)} />
                             </Col>
                             <Col sm={6} className='px-1'>
-                                <input id='email' type='email' value={formDetails.email} placeholder='example@mail.com' onChange={(e) => onFormUpdate('email', e.target.value)} />
+                                <input name='user-email' id='email' type='email' value={formDetails.email} placeholder='example@mail.com' onChange={(e) => onFormUpdate('email', e.target.value)} />
                             </Col>
                             <Col sm={6} className='px-1'>
-                            <input id='tel' type='tel' value={formDetails.phone} placeholder='(123) 4567 890' onChange={(e) => onFormUpdate('phone', e.target.value)} />
+                            <input name='telephone' id='tel' type='tel' value={formDetails.phone} placeholder='(123) 4567 890' onChange={(e) => onFormUpdate('phone', e.target.value)} />
                             </Col>
                             <Col>
-                                <textarea rows='6' value={formDetails.message} placeholder='Message' onChange={(e) => onFormUpdate('message', e.target.value)} />
+                                <textarea name='message' rows='6' value={formDetails.message} placeholder='Message' onChange={(e) => onFormUpdate('message', e.target.value)} />
                                 <button type='submit'><span>{buttonText}</span></button>
                             </Col>
                             {

@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser'
 
 export const Newsletter = ({ onValidated, subscribe, status, message}) => {
     const [ email, setEmail]  = useState('');
-    const form = useRef()
+    const form = useRef();
 
     const sendEmail = (e) => {
         e.preventDefault();
