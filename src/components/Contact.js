@@ -117,7 +117,7 @@ export const Contact = () => {
                             <Col sm={6} className='px-1'>
                             <input name='telephone' id='tel' type='tel' value={formDetails.phone} placeholder='(123) 4567 890' onChange={(e) => onFormUpdate('phone', e.target.value)} />
                             </Col>
-                            <Col>
+                            <Col className='px-1'>
                                 <textarea name='message' rows='6' value={formDetails.message} placeholder='Message' onChange={(e) => onFormUpdate('message', e.target.value)} />
                                 {
                                     status.message &&
