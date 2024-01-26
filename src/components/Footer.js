@@ -23,7 +23,7 @@ export const Footer = () => {
                             </a>
                         ))}
                     </div>
-                    <p>CopyRIght 2024. All Right Reserved</p>
+                    <p>CopyRIght 2023. All Right Reserved</p>
                 </Col>
             </Row>
         </Container>
