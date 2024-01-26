@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from '../assets/img/logo.png';
-import navIcon1 from '../assets/img/nav-icon1.svg'
-import navIcon2 from '../assets/img/nav-icon2.svg'
-import { Github } from 'react-bootstrap-icons';
+import useIconLinks from '../config/useIconLinks';
 
 export const NavBar = () => {
     const [ activeLink, setActiveLink ] = useState('home');
     const [ scrolled, setScrolled ] = useState(false);
+    
+    const iconLinks = useIconLinks()
 
     useEffect(() => {
         const onScroll = () => {
@@ -44,9 +44,11 @@ export const NavBar = () => {
         </Nav>
           <span className='navbar-text'>
             <div className='social-icon m-social-icon'>
-                <a href='https://www.linkedin.com/in/ayomide-adeyemo-61865526b/' target='_blank' rel="noopener noreferrer"><img src={navIcon1} alt='' /></a>
-                <a href='https://web.facebook.com/adeyemo.ayomide.165/' target='_blank' rel="noopener noreferrer"><img src={navIcon2} alt='' /></a>
-                <a href='https://github.com/femmytedrey/' target='_blank' rel="noopener noreferrer"><Github className='github' /></a>
+              {iconLinks.map(link => (
+                  <a key={link.id} href={link.url} target='_blank' rel="noopener noreferrer">
+                      <img src={link.imageUrl} alt={link.alt} />
+                  </a>
+              ))}
             </div>
             <Nav.Link href='#connect'><button className='vvo' onClick={() => console.log('connect')}><span>Let's Connect</span></button></Nav.Link>
           </span>
