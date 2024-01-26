@@ -1,11 +1,13 @@
+import React, { useState, useEffect } from 'react';
 import Carousel from "react-multi-carousel";
 import { Col, Container, Row } from 'react-bootstrap'
 import "react-multi-carousel/lib/styles.css";
-import React from 'react'
 import meter1 from '../assets/img/meter1.svg'
 import meter2 from '../assets/img/meter2.svg'
 import meter3 from '../assets/img/meter3.svg'
 import colorSharp from '../assets/img/color-sharp.png'
+import { getDownloadURL, ref } from 'firebase/storage';
+import { storage } from '../config/firebase';
 
 export const Skills = () => {
     const responsive = {
@@ -28,9 +30,29 @@ export const Skills = () => {
         }
     };
 
+    const [cvDownloadURL, setCvDownloadURL] = useState('');
+
     const handleDownloadCV = () => {
-        window.open('https://drive.google.com/file/d/1-GFLbmGV0A6WjwhoXJpTL-IhdMKN9cU2/view?usp=drivesdk', '_blank');
-      };
+        window.open(cvDownloadURL, '_blank');
+    };
+
+    useEffect(() => {
+        const cvStorageRef = ref(storage, 'mycv/FemiDev CV.pdf');
+    
+        getDownloadURL(cvStorageRef)
+            .then((url) => {
+                setCvDownloadURL(url);
+            })
+            .catch((error) => {
+                console.error('Error getting download URL:', error);
+    
+                // If needed, you can set a default or show an error message to the user
+                // setCvDownloadURL(DEFAULT_CV_URL);
+            });
+    }, []);
+    
+
+    
 
 
   return (

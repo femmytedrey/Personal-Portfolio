@@ -1,52 +1,70 @@
-import React from 'react'
-import cocktail from '../assets/img/Cocktail.jpeg'
-import calculator from '../assets/img/Calculator.jpeg'
-import manage from '../assets/img/Manage.jpeg'
-import loopstudio from '../assets/img/LoopStudio.jpeg'
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Nav, Tab } from 'react-bootstrap'
 import { ProjectCard } from './ProjectCard'
 import colorSharp2 from '../assets/img/color-sharp2.png'
 import TrackVisibility from 'react-on-screen'
+import { collection, getDocs } from 'firebase/firestore';
+import { firestore } from '../config/firebase';
 
 export const Projects = () => {
-    const projects = [
-        {
-            title: "TheCocktail",
-            description: "Design & Development",
-            imgUrl: cocktail,
-            url: 'https://cocktail-femidev.netlify.app/'
-          },
-          {
-            title: "Calculator",
-            description: "3 themes Calculator",
-            imgUrl: calculator,
-            url: 'https://modeswitchcalc.netlify.app/'
-          },
-          {
-            title: "Manage",
-            description: "Manage landing page",
-            imgUrl: manage,
-            url: 'https://managelandingpagee.netlify.app/'
-          },
-          {
-            title: "Loop Studio",
-            description: "Design & Development",
-            imgUrl: loopstudio,
-            url: 'https://looopstudiooo.netlify.app/'
-          },
-          {
-            title: "Calculator",
-            description: "3 themes Calculator",
-            imgUrl: calculator,
-            url: 'https://modeswitchcalc.netlify.app/'
-          },
-          {
-            title: "Manage",
-            description: "Manage landing page",
-            imgUrl: manage,
-            url: 'https://managelandingpagee.netlify.app/'
-          },
-    ];
+    const [ projects, setProjects ] = useState([])
+    // const projects = [
+    //     {
+    //         title: "TheCocktail",
+    //         description: "Design & Development",
+    //         imageUrl: cocktail,
+    //         url: 'https://cocktail-femidev.netlify.app/'
+    //       },
+    //       {
+    //         title: "Calculator",
+    //         description: "3 themes Calculator",
+    //         imageUrl: calculator,
+    //         url: 'https://modeswitchcalc.netlify.app/'
+    //       },
+    //       {
+    //         title: "Manage",
+    //         description: "Manage landing page",
+    //         imageUrl: manage,
+    //         url: 'https://managelandingpagee.netlify.app/'
+    //       },
+    //       {
+    //         title: "Loop Studio",
+    //         description: "Design & Development",
+    //         imageUrl: loopstudio,
+    //         url: 'https://looopstudiooo.netlify.app/'
+    //       },
+    //       {
+    //         title: "Calculator",
+    //         description: "3 themes Calculator",
+    //         imageUrl: calculator,
+    //         url: 'https://modeswitchcalc.netlify.app/'
+    //       },
+    //       {
+    //         title: "Manage",
+    //         description: "Manage landing page",
+    //         imageUrl: manage,
+    //         url: 'https://managelandingpagee.netlify.app/'
+    //       },
+    // ];
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+          try {
+            const projectsCollection = collection(firestore, 'projects');
+            const projectsSnapshot = await getDocs(projectsCollection);
+            const fetchedProjects = projectsSnapshot.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            }));
+            setProjects(fetchedProjects);
+          } catch (error) {
+            console.error('Error fetching projects:', error);
+          }
+        };
+    
+        fetchProjects();
+      }, []);
+
   return (
     <section className='project' id='projects'>
         <Container>
@@ -75,13 +93,9 @@ export const Projects = () => {
                         <Tab.Content id='slideInUp'>
                             <Tab.Pane eventKey='first'>
                                 <Row className='proj-container'>
-                                    {
-                                        projects.map((project, index) => {
-                                            return(
-                                                <ProjectCard key={index} {...project} />
-                                            )
-                                        })
-                                    }
+                                {projects.map((project) => (
+                                    <ProjectCard key={project.id} {...project} />
+                                ))}
                                 </Row>
                             </Tab.Pane>
                             <Tab.Pane eventKey='second'><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p></Tab.Pane>
