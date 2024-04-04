@@ -77,6 +77,10 @@ export const Skills = () => {
                                 <h5>BOOTSTRAP</h5>
                             </div>
                             <div className="item">
+                                <img src={meter1} alt = "meter1" />
+                                <h5>TAILWIND CSS</h5>
+                            </div>
+                            <div className="item">
                                 <img src={meter3} alt = "meter3" />
                                 <h5>JAVASCRIPT / REACT JS</h5>
                             </div>
