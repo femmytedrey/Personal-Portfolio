@@ -37,7 +37,7 @@ export const Skills = () => {
     };
 
     useEffect(() => {
-        const cvStorageRef = ref(storage, 'mycv/FemiDev CV.pdf');
+        const cvStorageRef = ref(storage, 'mycv/My Resume.pdf');
     
         getDownloadURL(cvStorageRef)
             .then((url) => {
