@@ -19,11 +19,9 @@ export const Banner = () => {
 
   const toRotate = useMemo(
     () => [
+      "Full-Stack Developer",
       "Frontend Developer",
       "Backend Developer",
-      "Graphics Designer",
-      "Logo Designer",
-      "UI/UX Designer",
     ],
     []
   );
